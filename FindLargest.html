@@ -1,0 +1,104 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Largest In an array</title>
+</head>
+<body>
+<span>Find The Lagest Number Using Max, function = </span>
+<span id="demo"> </span><br>
+
+<span>Find The Lagest Number Using for loop = </span>
+<span id="demo2"> </span>
+
+
+<h1>Nested Array</h1>
+<p>chnage the nested array into simpe array using reduce, concat, and isArray function</p>
+<span>Find The Lagest Number Using for loop = </span>
+<span id="demo3"> </span>
+
+
+
+
+<p>Find The 2nd Lagest Number Using for loop = </p>
+<span id="demo4"> </span>
+
+    <script>
+         
+    const numbers = [ 1,2, 7,3,4 ]    
+    const num = Math.max(...numbers)
+     document.getElementById("demo").innerHTML=parseInt(num)
+
+//largest using for loop
+const number2 = [ 1,2, 7,3,4 ]  
+ const legestNumber = (val) =>{
+     let highest = 0;
+     let lentgh =(val.length)
+     for(let i=0; i<lentgh; i++){
+         if(val[i] > highest )
+        {
+             highest= val[i]
+        }
+     }
+     return highest;
+ }
+ const largest = legestNumber(numbers)
+ document.getElementById("demo2").innerHTML=largest
+    
+
+ // nested array
+ const number3 = [1,2,3,4,  [4,5,8, [0,2,11,14] ,3,4,5]  ]
+
+ // flatten will return simple array
+ const flatten = (values)=>values.reduce(
+        (acc, item, index, array) =>
+        acc.concat( 
+            Array.isArray(item) ? flatten(item) : item
+        ),[]
+ )
+  
+ // simple array function
+ const NestedLargest = (val) =>{
+     let heighest = 0;
+     let lentgh =(val.length)
+     for(let i=0; i<lentgh; i++){
+         if(val[i] > heighest )
+        {
+             heighest= val[i]
+        }
+     }
+     return heighest;
+ }
+//  console.log( NestedLargest(flatten(number3)))
+const largest3 = NestedLargest(flatten(number3))
+document.getElementById("demo3").innerHTML=largest3
+
+
+
+//largest using for loop
+const number4 = [ 1,2,23, 7,3,4 ]  
+ const legestNumber4 = (val) =>{
+     let first = 0;
+     let second= 0;
+     let lentgh4 =(val.length)
+     for(let i=0; i<lentgh4; i++){
+         if(val[i] > first )
+        {   
+             first= val[i]
+             
+        }else if (val[i] > second) {
+            second = val[i]
+            
+        } 
+     }
+     return second;
+ }
+
+ const largest4 = legestNumber4(number4)
+ console.log(largest4)
+  document.getElementById("demo4").innerHTML=largest4
+    </script>
+    
+</body>
+</html>
